@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Or5-Ut-kLw">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller - Monday-->
+        <scene sceneID="gRu-Os-qzc">
+            <objects>
+                <viewController id="Or5-Ut-kLw" customClass="SMViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dkc-5W-ATq"/>
+                        <viewControllerLayoutGuide type="bottom" id="EqD-zY-ZA5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xlg-Yx-s4G">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where Should I Eat?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itn-Dz-Kzl">
+                                <rect key="frame" x="0.0" y="30" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="445-il-R0Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dYe-ob-oK0">
+                                <rect key="frame" x="0.0" y="61" width="320" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="f3z-3R-f4e"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="MON"/>
+                                    <segment title="TUE"/>
+                                    <segment title="WED"/>
+                                    <segment title="THU"/>
+                                    <segment title="FRI"/>
+                                </segments>
+                            </segmentedControl>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkf-BH-ZSw">
+                                <rect key="frame" x="0.0" y="99" width="320" height="469"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dka-8R-iiM">
+                                    <size key="itemSize" width="320" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Or5-Ut-kLw" id="TdC-LA-Vfd"/>
+                                    <outlet property="delegate" destination="Or5-Ut-kLw" id="bqe-vw-pGx"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gkf-BH-ZSw" firstAttribute="top" secondItem="dYe-ob-oK0" secondAttribute="bottom" constant="10" id="2Sd-RI-gc0"/>
+                            <constraint firstItem="dYe-ob-oK0" firstAttribute="leading" secondItem="xlg-Yx-s4G" secondAttribute="leading" id="8IQ-yO-9pu"/>
+                            <constraint firstItem="itn-Dz-Kzl" firstAttribute="top" secondItem="Dkc-5W-ATq" secondAttribute="bottom" constant="10" id="8oZ-cL-a5e"/>
+                            <constraint firstItem="gkf-BH-ZSw" firstAttribute="leading" secondItem="xlg-Yx-s4G" secondAttribute="leading" id="QBd-dd-27F"/>
+                            <constraint firstItem="dYe-ob-oK0" firstAttribute="top" secondItem="itn-Dz-Kzl" secondAttribute="bottom" constant="10" id="T5J-hf-MYc"/>
+                            <constraint firstItem="itn-Dz-Kzl" firstAttribute="leading" secondItem="xlg-Yx-s4G" secondAttribute="leading" id="YyB-SP-m43"/>
+                            <constraint firstAttribute="trailing" secondItem="gkf-BH-ZSw" secondAttribute="trailing" id="fKc-N2-WDp"/>
+                            <constraint firstItem="EqD-zY-ZA5" firstAttribute="top" secondItem="gkf-BH-ZSw" secondAttribute="bottom" id="mBK-SO-5N9"/>
+                            <constraint firstAttribute="trailing" secondItem="itn-Dz-Kzl" secondAttribute="trailing" id="sbk-Ze-OVN"/>
+                            <constraint firstAttribute="trailing" secondItem="dYe-ob-oK0" secondAttribute="trailing" id="xnh-j4-xQQ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Monday" id="CG2-lQ-ddt"/>
+                    <connections>
+                        <outlet property="collectionView" destination="gkf-BH-ZSw" id="C81-WF-G8x"/>
+                        <outlet property="daySegmentedControl" destination="dYe-ob-oK0" id="JBt-LH-i5z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nEw-UD-g6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-819" y="1134"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

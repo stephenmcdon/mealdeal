@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Mhh-JR-4No" customClass="FoodItemCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yz4-2s-REc" userLabel="Menu Item Label">
+                        <rect key="frame" x="10" y="2" width="240" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="FCr-hq-aRT"/>
+                            <constraint firstAttribute="width" constant="240" id="spP-ml-CT2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsA-8w-5MQ" userLabel="Price Label">
+                        <rect key="frame" x="250" y="2" width="60" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="8uP-WQ-RNM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goi-CK-3tl" userLabel="Vendor Label">
+                        <rect key="frame" x="10" y="25" width="240" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="240" id="Tsw-Rk-LXT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="yz4-2s-REc" firstAttribute="leading" secondItem="Mhh-JR-4No" secondAttribute="leading" constant="10" id="Ipy-Kj-6Cq"/>
+                <constraint firstItem="yz4-2s-REc" firstAttribute="top" secondItem="Mhh-JR-4No" secondAttribute="top" constant="2" id="SFh-aA-PsY"/>
+                <constraint firstItem="goi-CK-3tl" firstAttribute="leading" secondItem="Mhh-JR-4No" secondAttribute="leading" constant="10" id="XAd-We-pa6"/>
+                <constraint firstItem="CsA-8w-5MQ" firstAttribute="top" secondItem="Mhh-JR-4No" secondAttribute="top" constant="2" id="bZN-0Y-dVa"/>
+                <constraint firstItem="goi-CK-3tl" firstAttribute="top" secondItem="yz4-2s-REc" secondAttribute="bottom" constant="2" id="fM2-JM-Kx4"/>
+                <constraint firstItem="CsA-8w-5MQ" firstAttribute="leading" secondItem="yz4-2s-REc" secondAttribute="trailing" id="sDU-XY-dl9"/>
+                <constraint firstAttribute="trailing" secondItem="CsA-8w-5MQ" secondAttribute="trailing" constant="10" id="vaM-6b-HjI"/>
+            </constraints>
+            <size key="customSize" width="356" height="49"/>
+            <connections>
+                <outlet property="menuItemLabel" destination="yz4-2s-REc" id="6pJ-rM-r8K"/>
+                <outlet property="priceLabel" destination="CsA-8w-5MQ" id="uXM-sX-pz4"/>
+                <outlet property="vendorLabel" destination="goi-CK-3tl" id="BzF-tF-QzT"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>
