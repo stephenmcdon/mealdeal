@@ -39,6 +39,7 @@
                                     <segment title="THU"/>
                                     <segment title="FRI"/>
                                 </segments>
+                                <color key="tintColor" red="0.29580236510000002" green="0.66666666669999997" blue="0.29969017409999998" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gkf-BH-ZSw">
                                 <rect key="frame" x="0.0" y="99" width="320" height="469"/>
@@ -56,6 +57,22 @@
                                     <outlet property="delegate" destination="Or5-Ut-kLw" id="bqe-vw-pGx"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGz-UN-1VH">
+                                <rect key="frame" x="285" y="25" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="apK-ys-SLz"/>
+                                    <constraint firstAttribute="height" constant="30" id="ilw-DA-07p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="0.29580236510000002" green="0.66666666669999997" blue="0.29969017409999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="WD1-dz-0xF" kind="modal" identifier="showAddItemModal" id="zTU-bh-ypU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -64,7 +81,9 @@
                             <constraint firstItem="itn-Dz-Kzl" firstAttribute="top" secondItem="Dkc-5W-ATq" secondAttribute="bottom" constant="10" id="8oZ-cL-a5e"/>
                             <constraint firstItem="gkf-BH-ZSw" firstAttribute="leading" secondItem="xlg-Yx-s4G" secondAttribute="leading" id="QBd-dd-27F"/>
                             <constraint firstItem="dYe-ob-oK0" firstAttribute="top" secondItem="itn-Dz-Kzl" secondAttribute="bottom" constant="10" id="T5J-hf-MYc"/>
+                            <constraint firstItem="PGz-UN-1VH" firstAttribute="top" secondItem="Dkc-5W-ATq" secondAttribute="bottom" constant="5" id="YVy-Qw-I4L"/>
                             <constraint firstItem="itn-Dz-Kzl" firstAttribute="leading" secondItem="xlg-Yx-s4G" secondAttribute="leading" id="YyB-SP-m43"/>
+                            <constraint firstAttribute="trailing" secondItem="PGz-UN-1VH" secondAttribute="trailing" constant="5" id="ev9-rR-oT4"/>
                             <constraint firstAttribute="trailing" secondItem="gkf-BH-ZSw" secondAttribute="trailing" id="fKc-N2-WDp"/>
                             <constraint firstItem="EqD-zY-ZA5" firstAttribute="top" secondItem="gkf-BH-ZSw" secondAttribute="bottom" id="mBK-SO-5N9"/>
                             <constraint firstAttribute="trailing" secondItem="itn-Dz-Kzl" secondAttribute="trailing" id="sbk-Ze-OVN"/>
@@ -80,6 +99,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEw-UD-g6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-819" y="1134"/>
+        </scene>
+        <!--Add Item View Controller-->
+        <scene sceneID="cwd-s4-bAC">
+            <objects>
+                <viewController id="WD1-dz-0xF" customClass="SMAddItemViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VOQ-ie-WRR"/>
+                        <viewControllerLayoutGuide type="bottom" id="DOu-F0-9U9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bUz-Yh-K1R">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHc-8S-1QL">
+                                <rect key="frame" x="0.0" y="30" width="320" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ufd-KC-obh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avF-cg-nyM">
+                                <rect key="frame" x="5" y="25" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="WYh-Ca-IZS"/>
+                                    <constraint firstAttribute="height" constant="30" id="bGg-Km-IPP"/>
+                                </constraints>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.29580236510000002" green="0.66666666669999997" blue="0.29969017409999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="WD1-dz-0xF" eventType="touchUpInside" id="eoJ-na-zpa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="avF-cg-nyM" firstAttribute="top" secondItem="VOQ-ie-WRR" secondAttribute="bottom" constant="5" id="Dnj-Nz-hol"/>
+                            <constraint firstItem="NHc-8S-1QL" firstAttribute="top" secondItem="VOQ-ie-WRR" secondAttribute="bottom" constant="10" id="JOf-ta-qbO"/>
+                            <constraint firstAttribute="trailing" secondItem="NHc-8S-1QL" secondAttribute="trailing" id="Pcb-tg-OFB"/>
+                            <constraint firstItem="avF-cg-nyM" firstAttribute="leading" secondItem="bUz-Yh-K1R" secondAttribute="leading" constant="5" id="VTK-Cv-tFy"/>
+                            <constraint firstItem="NHc-8S-1QL" firstAttribute="leading" secondItem="bUz-Yh-K1R" secondAttribute="leading" id="cWh-g8-2a7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tl0-WF-4uW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-374" y="1131"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

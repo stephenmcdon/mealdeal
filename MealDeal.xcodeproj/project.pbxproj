@@ -23,6 +23,7 @@
 		B69C5D84189C760400AFE961 /* MealDealTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C5D83189C760400AFE961 /* MealDealTests.m */; };
 		B69C5D92189C796100AFE961 /* FoodItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69C5D91189C796100AFE961 /* FoodItemCollectionViewCell.xib */; };
 		B69C5D95189C798F00AFE961 /* FoodItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C5D94189C798F00AFE961 /* FoodItemCollectionViewCell.m */; };
+		B69FAEE518A882BC0006F33C /* SMAddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69FAEE418A882BC0006F33C /* SMAddItemViewController.m */; };
 		B6CC2CEC18A316E4008F3425 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D59189C760400AFE961 /* UIKit.framework */; };
 		B6CC2CED18A316E4008F3425 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D55189C760400AFE961 /* Foundation.framework */; };
 		B6CC2CEE18A316E4008F3425 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D57189C760400AFE961 /* CoreGraphics.framework */; };
@@ -65,6 +66,8 @@
 		B69C5D91189C796100AFE961 /* FoodItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		B69C5D93189C798F00AFE961 /* FoodItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodItemCollectionViewCell.h; sourceTree = "<group>"; };
 		B69C5D94189C798F00AFE961 /* FoodItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemCollectionViewCell.m; sourceTree = "<group>"; };
+		B69FAEE318A882BC0006F33C /* SMAddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddItemViewController.h; sourceTree = "<group>"; };
+		B69FAEE418A882BC0006F33C /* SMAddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddItemViewController.m; sourceTree = "<group>"; };
 		B6CC2CEB18A316E4008F3425 /* MealDealSpecs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealDealSpecs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CC2CF118A316E4008F3425 /* MealDealSpecs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MealDealSpecs-Info.plist"; sourceTree = "<group>"; };
 		B6CC2CF318A316E4008F3425 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -145,6 +148,7 @@
 		B69C5D5B189C760400AFE961 /* MealDeal */ = {
 			isa = PBXGroup;
 			children = (
+				B6CC2D0018A31873008F3425 /* ViewControllers */,
 				B69C5D8D189C78D300AFE961 /* UI */,
 				B69C5D64189C760400AFE961 /* SMAppDelegate.h */,
 				B69C5D65189C760400AFE961 /* SMAppDelegate.m */,
@@ -189,8 +193,6 @@
 				B69C5D8E189C78EE00AFE961 /* XIB */,
 				B69C5D93189C798F00AFE961 /* FoodItemCollectionViewCell.h */,
 				B69C5D94189C798F00AFE961 /* FoodItemCollectionViewCell.m */,
-				B69C5D6D189C760400AFE961 /* SMViewController.h */,
-				B69C5D6E189C760400AFE961 /* SMViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -224,6 +226,17 @@
 				B6CC2CF718A316E4008F3425 /* MealDealSpecs-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B6CC2D0018A31873008F3425 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B69C5D6D189C760400AFE961 /* SMViewController.h */,
+				B69C5D6E189C760400AFE961 /* SMViewController.m */,
+				B69FAEE318A882BC0006F33C /* SMAddItemViewController.h */,
+				B69FAEE418A882BC0006F33C /* SMAddItemViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +366,7 @@
 			files = (
 				B69C5D66189C760400AFE961 /* SMAppDelegate.m in Sources */,
 				B69C5D95189C798F00AFE961 /* FoodItemCollectionViewCell.m in Sources */,
+				B69FAEE518A882BC0006F33C /* SMAddItemViewController.m in Sources */,
 				B69C5D6F189C760400AFE961 /* SMViewController.m in Sources */,
 				B69C5D62189C760400AFE961 /* main.m in Sources */,
 			);
@@ -651,6 +665,7 @@
 				B6CC2CFE18A316E5008F3425 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
