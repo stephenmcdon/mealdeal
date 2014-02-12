@@ -14,3 +14,11 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+typedef enum {
+    WeekDays_Monday = 0,
+    WeekDays_Tuesday,
+    WeekDays_Wednesday,
+    WeekDays_Thursday,
+    WeekDays_Friday
+}WeekDays;

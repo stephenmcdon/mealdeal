@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B629ED3918A88977009E1969 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B629ED3818A88977009E1969 /* CoreData.framework */; };
+		B629ED3C18A88DBC009E1969 /* MealDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B629ED3A18A88DBC009E1969 /* MealDeal.xcdatamodeld */; };
+		B647BC8918AB22E3008BE89F /* Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = B647BC8818AB22E2008BE89F /* Meal.m */; };
 		B69C5D56189C760400AFE961 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D55189C760400AFE961 /* Foundation.framework */; };
 		B69C5D58189C760400AFE961 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D57189C760400AFE961 /* CoreGraphics.framework */; };
 		B69C5D5A189C760400AFE961 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D59189C760400AFE961 /* UIKit.framework */; };
@@ -44,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B629ED3818A88977009E1969 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B629ED3B18A88DBC009E1969 /* MealDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealDeal.xcdatamodel; sourceTree = "<group>"; };
+		B647BC8718AB22E2008BE89F /* Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = "<group>"; };
+		B647BC8818AB22E2008BE89F /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = "<group>"; };
 		B69C5D52189C760400AFE961 /* MealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B69C5D55189C760400AFE961 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B69C5D57189C760400AFE961 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -103,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B629ED3918A88977009E1969 /* CoreData.framework in Frameworks */,
 				B6CC2CEE18A316E4008F3425 /* CoreGraphics.framework in Frameworks */,
 				B6CC2CEC18A316E4008F3425 /* UIKit.framework in Frameworks */,
 				B6CC2CFA18A316E5008F3425 /* Cedar-iOS.framework in Frameworks */,
@@ -113,6 +121,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B647BC8A18AB22F3008BE89F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B647BC8718AB22E2008BE89F /* Meal.h */,
+				B647BC8818AB22E2008BE89F /* Meal.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B647BC8E18AB35ED008BE89F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		B69C5D49189C760400AFE961 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +161,7 @@
 		B69C5D54189C760400AFE961 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B629ED3818A88977009E1969 /* CoreData.framework */,
 				B69C5D55189C760400AFE961 /* Foundation.framework */,
 				B69C5D57189C760400AFE961 /* CoreGraphics.framework */,
 				B69C5D59189C760400AFE961 /* UIKit.framework */,
@@ -148,12 +173,15 @@
 		B69C5D5B189C760400AFE961 /* MealDeal */ = {
 			isa = PBXGroup;
 			children = (
+				B647BC8E18AB35ED008BE89F /* Utils */,
+				B647BC8A18AB22F3008BE89F /* Models */,
 				B6CC2D0018A31873008F3425 /* ViewControllers */,
 				B69C5D8D189C78D300AFE961 /* UI */,
 				B69C5D64189C760400AFE961 /* SMAppDelegate.h */,
 				B69C5D65189C760400AFE961 /* SMAppDelegate.m */,
 				B69C5D70189C760400AFE961 /* Images.xcassets */,
 				B69C5D5C189C760400AFE961 /* Supporting Files */,
+				B629ED3A18A88DBC009E1969 /* MealDeal.xcdatamodeld */,
 			);
 			path = MealDeal;
 			sourceTree = "<group>";
@@ -368,6 +396,8 @@
 				B69C5D95189C798F00AFE961 /* FoodItemCollectionViewCell.m in Sources */,
 				B69FAEE518A882BC0006F33C /* SMAddItemViewController.m in Sources */,
 				B69C5D6F189C760400AFE961 /* SMViewController.m in Sources */,
+				B647BC8918AB22E3008BE89F /* Meal.m in Sources */,
+				B629ED3C18A88DBC009E1969 /* MealDeal.xcdatamodeld in Sources */,
 				B69C5D62189C760400AFE961 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -668,6 +698,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B629ED3A18A88DBC009E1969 /* MealDeal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B629ED3B18A88DBC009E1969 /* MealDeal.xcdatamodel */,
+			);
+			currentVersion = B629ED3B18A88DBC009E1969 /* MealDeal.xcdatamodel */;
+			path = MealDeal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B69C5D4A189C760400AFE961 /* Project object */;
 }

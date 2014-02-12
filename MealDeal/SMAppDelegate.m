@@ -7,8 +7,13 @@
 //
 
 #import "SMAppDelegate.h"
+#import <CoreData/CoreData.h>
 
 @implementation SMAppDelegate
+
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize managedObjectModel = _managedObjectModel;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -40,7 +45,72 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+//
+#pragma mark - Core Data
+- (void)saveContext {
+    NSError *error;
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if(managedObjectContext != nil) {
+        if([managedObjectContext hasChanges] && [managedObjectContext save:&error]) {
+            NSLog(@"Something went wrong.");
+        }
+    }
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
+    }
+    
+    NSPersistentStoreCoordinator *persistentStoreCoordinator = [self persistentStoreCoordinator];
+    if(persistentStoreCoordinator != nil) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [_managedObjectContext setPersistentStoreCoordinator:persistentStoreCoordinator];
+    }
+    
+    return _managedObjectContext;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    
+    if(_persistentStoreCoordinator != nil) {
+        return _persistentStoreCoordinator;
+    }
+    
+    NSURL *storeUrl = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Meal.sqlite"];
+    NSError *error = nil;
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+    						 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+    						 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:options error:&error]) {
+
+    }
+    return _persistentStoreCoordinator;
+}
+
+- (NSManagedObjectModel *)managedObjectModel {
+    
+    if(_managedObjectModel != nil) {
+        return _managedObjectModel;
+        
+    }
+    NSURL *modelUrl = [[NSBundle mainBundle] URLForResource:@"MealDeal" withExtension:@"momd"];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelUrl];
+    return _managedObjectModel;
+}
+
+#pragma mark - Application Documents Directory
+
+- (NSURL *)applicationDocumentsDirectory
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory
+                                                   inDomains:NSUserDomainMask] lastObject];
 }
 
 @end

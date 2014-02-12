@@ -137,18 +137,73 @@
                                     <action selector="cancelButtonTapped:" destination="WD1-dz-0xF" eventType="touchUpInside" id="eoJ-na-zpa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HG7-c5-cGs">
+                                <rect key="frame" x="275" y="25" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JAE-72-iIP"/>
+                                    <constraint firstAttribute="width" constant="40" id="uPk-Za-7oU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.29580236510000002" green="0.66666666669999997" blue="0.29969017409999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.29580236510000002" green="0.66666666669999997" blue="0.29969017409999998" alpha="0.51000000000000001" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="WD1-dz-0xF" eventType="touchUpInside" id="nDu-P4-sID"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Meal" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Klp-nO-NbX">
+                                <rect key="frame" x="20" y="93" width="257" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Vendor" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lwK-xu-qSZ">
+                                <rect key="frame" x="20" y="147" width="257" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lit-ha-aTA">
+                                <rect key="frame" x="20" y="203" width="257" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="HG7-c5-cGs" firstAttribute="top" secondItem="VOQ-ie-WRR" secondAttribute="bottom" constant="5" id="DIL-fo-Lf7"/>
                             <constraint firstItem="avF-cg-nyM" firstAttribute="top" secondItem="VOQ-ie-WRR" secondAttribute="bottom" constant="5" id="Dnj-Nz-hol"/>
                             <constraint firstItem="NHc-8S-1QL" firstAttribute="top" secondItem="VOQ-ie-WRR" secondAttribute="bottom" constant="10" id="JOf-ta-qbO"/>
                             <constraint firstAttribute="trailing" secondItem="NHc-8S-1QL" secondAttribute="trailing" id="Pcb-tg-OFB"/>
                             <constraint firstItem="avF-cg-nyM" firstAttribute="leading" secondItem="bUz-Yh-K1R" secondAttribute="leading" constant="5" id="VTK-Cv-tFy"/>
                             <constraint firstItem="NHc-8S-1QL" firstAttribute="leading" secondItem="bUz-Yh-K1R" secondAttribute="leading" id="cWh-g8-2a7"/>
+                            <constraint firstAttribute="trailing" secondItem="HG7-c5-cGs" secondAttribute="trailing" constant="5" id="lwD-6N-82y"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="C9Y-Sj-NZ1" appends="YES" id="Cee-5k-wYj"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="addButton" destination="HG7-c5-cGs" id="xSR-Wl-Lzn"/>
+                        <outlet property="mealTextField" destination="Klp-nO-NbX" id="L43-Sp-v2z"/>
+                        <outlet property="priceTextField" destination="lit-ha-aTA" id="LqL-cg-dFd"/>
+                        <outlet property="vendorTextField" destination="lwK-xu-qSZ" id="Kv8-rP-n10"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tl0-WF-4uW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="C9Y-Sj-NZ1">
+                    <connections>
+                        <action selector="handleTapGesture:" destination="WD1-dz-0xF" id="sMG-Hm-ixf"/>
+                        <outlet property="delegate" destination="bUz-Yh-K1R" id="p5f-Ci-l44"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-374" y="1131"/>
         </scene>

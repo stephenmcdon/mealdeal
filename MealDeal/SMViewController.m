@@ -8,23 +8,19 @@
 
 #import "SMViewController.h"
 #import "FoodItemCollectionViewCell.h"
+#import "Meal.h"
+
+#import <CoreData/CoreData.h>
 
 @interface SMViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (weak,nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *daySegmentedControl;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *daySegmentedControl;
 
 @property (nonatomic,assign) NSInteger currentDay;
+@property (strong, nonatomic) NSArray *dealsArray;
 
 @end
-
-typedef enum {
-    WeekDays_Monday = 0,
-    WeekDays_Tuesday,
-    WeekDays_Wednesday,
-    WeekDays_Thursday,
-    WeekDays_Friday
-}WeekDays;
 
 @implementation SMViewController
 
@@ -38,6 +34,15 @@ typedef enum {
 	[self registerNibForCollectionViewCell];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self retrieveMealsForCurrentDay];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 #pragma mark - SegmentedControl
 
 - (void)daySegmentedControlValueChanged {
@@ -47,12 +52,14 @@ typedef enum {
 
 #pragma mark - UICollectionView methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 5 + self.currentDay;
+    return self.dealsArray.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FoodItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([FoodItemCollectionViewCell class]) forIndexPath:indexPath];
-    [cell setupCellWithVendor:@"Test" menuItem:@"Me" price:@"$99.99"];
+    Meal *meal = [self.dealsArray objectAtIndex:indexPath.row];
+    [cell setupCellWithVendor:meal.vendor menuItem:meal.meal price:meal.price];
     return cell;
 }
 
@@ -86,6 +93,32 @@ typedef enum {
         todayInt = WeekDays_Monday;
     }
     return todayInt;
+}
+
+#pragma mark - Core Data Calls
+
+- (void)retrieveMealsForCurrentDay {
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSEntityDescription *entityDescription =  [NSEntityDescription
+                                               entityForName:@"Meal"
+                                               inManagedObjectContext:managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    
+    NSError *error;
+    
+    self.dealsArray = [managedObjectContext executeFetchRequest:request error:&error];
+    
+    if(error) {
+        NSLog(@"Error fetching");
+    } else {
+        NSLog(@"No error");
+    }
+    [self.collectionView reloadData];
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    return [[(id)[UIApplication sharedApplication] delegate] managedObjectContext];
 }
 
 @end
