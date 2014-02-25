@@ -46,6 +46,7 @@
 
 - (void)daySegmentedControlValueChanged {
     self.currentDay = self.daySegmentedControl.selectedSegmentIndex;
+    [self retrieveMealsForCurrentDay];
     [self.collectionView reloadData];
 }
 
@@ -69,7 +70,6 @@
 - (void)registerNibForCollectionViewCell {
     UINib *nib = [UINib nibWithNibName:@"FoodItemCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([FoodItemCollectionViewCell class])];
-    
 }
 
 #pragma mark - View Lifecycle Helpers
@@ -101,7 +101,7 @@
 #pragma mark - Data Retrieval
 
 - (void)retrieveMealsForCurrentDay {
-    self.dealsArray = [[SMDataManager sharedInstance] allMeals];
+    self.dealsArray = [[SMDataManager sharedInstance] allMealsForWeekDay:self.currentDay];
     [self.collectionView reloadData];
 }
 

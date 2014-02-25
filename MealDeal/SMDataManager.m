@@ -32,23 +32,24 @@ static SMDataManager *instance;
 #pragma mark - Meals
 
 - (NSArray *)allMeals {
-    NSEntityDescription *entityDescription =  [NSEntityDescription
-                                                        entityForName:@"Meal"
-                                               inManagedObjectContext:self.managedObjectContext];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
+    NSFetchRequest *request = [self fetchRequestForEntityName:@"Meal"];
     
     NSError *error;
-    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
-    
-    if(error) {
-        NSLog(@"Error fetching");
-    } else {
-        NSLog(@"No error");
-    }
-    
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request
+                                                                error:&error];
     return results;
+}
+
+- (NSArray *)allMealsForWeekDay:(WeekDay)weekDay {
+    NSFetchRequest *request = [self fetchRequestForEntityName:@"Meal"];
     
+    NSPredicate *dayPredicate = [NSPredicate predicateWithFormat:@"day == %d", weekDay];
+    [request setPredicate:dayPredicate];
+    
+    NSError *error;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request
+                                                                error:&error];
+    return results;
 }
 
 - (BOOL)addMeal:(NSString *)meal
@@ -56,7 +57,8 @@ static SMDataManager *instance;
          vendor:(NSString *)vendor
         weekDay:(WeekDay)weekDay {
     
-    Meal *newMeal = [NSEntityDescription insertNewObjectForEntityForName:@"Meal" inManagedObjectContext:self.managedObjectContext];
+    Meal *newMeal = [NSEntityDescription insertNewObjectForEntityForName:@"Meal"
+                                                  inManagedObjectContext:self.managedObjectContext];
     newMeal.meal = meal;
     newMeal.price = price;
     newMeal.vendor = vendor;
@@ -73,5 +75,17 @@ static SMDataManager *instance;
     
     return successfullyAdded;
 }
+
+#pragma mark - Helpers
+
+- (NSFetchRequest *)fetchRequestForEntityName:(NSString *)entityName {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName
+                                                         inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entityDescription];
+    return fetchRequest;
+}
+
+
 
 @end
