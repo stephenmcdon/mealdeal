@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61DD2C518BC3A5400C6164B /* _Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = B61DD2C418BC3A5400C6164B /* _Meal.m */; };
+		B61DD2C818BC3A5B00C6164B /* Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = B61DD2C718BC3A5B00C6164B /* Meal.m */; };
 		B629ED3918A88977009E1969 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B629ED3818A88977009E1969 /* CoreData.framework */; };
 		B629ED3C18A88DBC009E1969 /* MealDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B629ED3A18A88DBC009E1969 /* MealDeal.xcdatamodeld */; };
-		B647BC8918AB22E3008BE89F /* Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = B647BC8818AB22E2008BE89F /* Meal.m */; };
 		B69C5D56189C760400AFE961 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D55189C760400AFE961 /* Foundation.framework */; };
 		B69C5D58189C760400AFE961 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D57189C760400AFE961 /* CoreGraphics.framework */; };
 		B69C5D5A189C760400AFE961 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D59189C760400AFE961 /* UIKit.framework */; };
@@ -47,10 +48,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B61DD2C318BC3A5400C6164B /* _Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Meal.h; sourceTree = "<group>"; };
+		B61DD2C418BC3A5400C6164B /* _Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Meal.m; sourceTree = "<group>"; };
+		B61DD2C618BC3A5B00C6164B /* Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = "<group>"; };
+		B61DD2C718BC3A5B00C6164B /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = "<group>"; };
 		B629ED3818A88977009E1969 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B629ED3B18A88DBC009E1969 /* MealDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealDeal.xcdatamodel; sourceTree = "<group>"; };
-		B647BC8718AB22E2008BE89F /* Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = "<group>"; };
-		B647BC8818AB22E2008BE89F /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = "<group>"; };
 		B69C5D52189C760400AFE961 /* MealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B69C5D55189C760400AFE961 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B69C5D57189C760400AFE961 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,11 +124,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B61DD2BE18BC39EB00C6164B /* Human */ = {
+			isa = PBXGroup;
+			children = (
+				B61DD2C618BC3A5B00C6164B /* Meal.h */,
+				B61DD2C718BC3A5B00C6164B /* Meal.m */,
+			);
+			name = Human;
+			sourceTree = "<group>";
+		};
+		B61DD2BF18BC39F200C6164B /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				B61DD2C318BC3A5400C6164B /* _Meal.h */,
+				B61DD2C418BC3A5400C6164B /* _Meal.m */,
+			);
+			name = Generated;
+			sourceTree = "<group>";
+		};
 		B647BC8A18AB22F3008BE89F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B647BC8718AB22E2008BE89F /* Meal.h */,
-				B647BC8818AB22E2008BE89F /* Meal.m */,
+				B61DD2BF18BC39F200C6164B /* Generated */,
+				B61DD2BE18BC39EB00C6164B /* Human */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -392,11 +413,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B61DD2C818BC3A5B00C6164B /* Meal.m in Sources */,
 				B69C5D66189C760400AFE961 /* SMAppDelegate.m in Sources */,
+				B61DD2C518BC3A5400C6164B /* _Meal.m in Sources */,
 				B69C5D95189C798F00AFE961 /* FoodItemCollectionViewCell.m in Sources */,
 				B69FAEE518A882BC0006F33C /* SMAddItemViewController.m in Sources */,
 				B69C5D6F189C760400AFE961 /* SMViewController.m in Sources */,
-				B647BC8918AB22E3008BE89F /* Meal.m in Sources */,
 				B629ED3C18A88DBC009E1969 /* MealDeal.xcdatamodeld in Sources */,
 				B69C5D62189C760400AFE961 /* main.m in Sources */,
 			);
