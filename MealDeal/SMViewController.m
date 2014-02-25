@@ -6,11 +6,10 @@
 //  Copyright (c) 2014 Stephen McDonald. All rights reserved.
 //
 
-#import "SMViewController.h"
 #import "FoodItemCollectionViewCell.h"
 #import "Meal.h"
-
-#import <CoreData/CoreData.h>
+#import "SMDataManager.h"
+#import "SMViewController.h"
 
 @interface SMViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -51,7 +50,9 @@
 }
 
 #pragma mark - UICollectionView methods
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section{
     return self.dealsArray.count;
 }
 
@@ -64,13 +65,15 @@
 }
 
 #pragma mark - NIBs
+
 - (void)registerNibForCollectionViewCell {
     UINib *nib = [UINib nibWithNibName:@"FoodItemCollectionViewCell" bundle:nil];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([FoodItemCollectionViewCell class])];
     
 }
 
-#pragma mark - Additional View Setup
+#pragma mark - View Lifecycle Helpers
+
 - (void)setupDaySegmentControl {
     [self.daySegmentedControl addTarget:self action:@selector(daySegmentedControlValueChanged) forControlEvents:UIControlEventValueChanged];
     [self.daySegmentedControl setSelectedSegmentIndex:self.currentDay];
@@ -89,36 +92,17 @@
     
     todayInt -= 2;  //offset so Monday now = 0
     
-    if(todayInt < WeekDays_Monday || todayInt > WeekDays_Friday) {
-        todayInt = WeekDays_Monday;
+    if(todayInt < WeekDay_Monday || todayInt > WeekDay_Friday) {
+        todayInt = WeekDay_Monday;
     }
     return todayInt;
 }
 
-#pragma mark - Core Data Calls
+#pragma mark - Data Retrieval
 
 - (void)retrieveMealsForCurrentDay {
-    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSEntityDescription *entityDescription =  [NSEntityDescription
-                                               entityForName:@"Meal"
-                                               inManagedObjectContext:managedObjectContext];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
-    
-    NSError *error;
-    
-    self.dealsArray = [managedObjectContext executeFetchRequest:request error:&error];
-    
-    if(error) {
-        NSLog(@"Error fetching");
-    } else {
-        NSLog(@"No error");
-    }
+    self.dealsArray = [[SMDataManager sharedInstance] allMeals];
     [self.collectionView reloadData];
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    return [[(id)[UIApplication sharedApplication] delegate] managedObjectContext];
 }
 
 @end

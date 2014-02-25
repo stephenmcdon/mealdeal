@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 Stephen McDonald. All rights reserved.
 //
 
-#import "SMAddItemViewController.h"
 #import "Meal.h"
+#import "SMAddItemViewController.h"
+#import "SMDataManager.h"
 
 @interface SMAddItemViewController () <UITextFieldDelegate>
 
@@ -19,7 +20,6 @@
 @end
 
 @implementation SMAddItemViewController
-
 
 #pragma mark - View Lifecycle
 
@@ -36,6 +36,12 @@
     self.mealTextField.delegate = self;
     self.priceTextField.delegate = self;
     self.vendorTextField.delegate = self;
+}
+
+- (void)resignAllFirstResponders {
+    [self.priceTextField resignFirstResponder];
+    [self.mealTextField resignFirstResponder];
+    [self.vendorTextField resignFirstResponder];
 }
 
 #pragma mark - UITextFieldDelegate
@@ -62,37 +68,24 @@
 
 - (IBAction)addButtonTapped:(id)sender {
     [self resignAllFirstResponders];
-    [self createNewManagedObject];
+    [self addMeal];
 }
 
-- (void)resignAllFirstResponders {
-    [self.priceTextField resignFirstResponder];
-    [self.mealTextField resignFirstResponder];
-    [self.vendorTextField resignFirstResponder];
-}
-
-#pragma mark - Tap Gesture
 - (IBAction)handleTapGesture:(id)sender {
     [self resignAllFirstResponders];
 }
 
+
 #pragma mark - Core Data
-- (void)createNewManagedObject {
-    Meal *meal = [NSEntityDescription insertNewObjectForEntityForName:@"Meal" inManagedObjectContext:[self managedObjectContext]];
-    meal.price = self.priceTextField.text;
-    meal.meal = self.mealTextField.text;
-    meal.vendor = self.vendorTextField.text;
-    meal.day = WeekDays_Monday;
-    NSError *error;
-    [meal.managedObjectContext save:&error];
-    if(!error) {
+- (void)addMeal {
+    BOOL successful = [[SMDataManager sharedInstance] addMeal:self.mealTextField.text
+                                                        price:self.priceTextField.text
+                                                       vendor:self.vendorTextField.text
+                                                      weekDay:WeekDay_Monday];
+    if(successful) {
         [self resignAllFirstResponders];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    return [[(id)[UIApplication sharedApplication] delegate] managedObjectContext];
 }
 
 @end

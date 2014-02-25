@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B61DD2C518BC3A5400C6164B /* _Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = B61DD2C418BC3A5400C6164B /* _Meal.m */; };
 		B61DD2C818BC3A5B00C6164B /* Meal.m in Sources */ = {isa = PBXBuildFile; fileRef = B61DD2C718BC3A5B00C6164B /* Meal.m */; };
+		B61DD2CB18BC3CBA00C6164B /* SMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B61DD2CA18BC3CBA00C6164B /* SMDataManager.m */; };
 		B629ED3918A88977009E1969 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B629ED3818A88977009E1969 /* CoreData.framework */; };
 		B629ED3C18A88DBC009E1969 /* MealDeal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B629ED3A18A88DBC009E1969 /* MealDeal.xcdatamodeld */; };
 		B69C5D56189C760400AFE961 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D55189C760400AFE961 /* Foundation.framework */; };
@@ -52,6 +53,8 @@
 		B61DD2C418BC3A5400C6164B /* _Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Meal.m; sourceTree = "<group>"; };
 		B61DD2C618BC3A5B00C6164B /* Meal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Meal.h; sourceTree = "<group>"; };
 		B61DD2C718BC3A5B00C6164B /* Meal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Meal.m; sourceTree = "<group>"; };
+		B61DD2C918BC3CBA00C6164B /* SMDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDataManager.h; sourceTree = "<group>"; };
+		B61DD2CA18BC3CBA00C6164B /* SMDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDataManager.m; sourceTree = "<group>"; };
 		B629ED3818A88977009E1969 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B629ED3B18A88DBC009E1969 /* MealDeal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealDeal.xcdatamodel; sourceTree = "<group>"; };
 		B69C5D52189C760400AFE961 /* MealDeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealDeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +157,8 @@
 		B647BC8E18AB35ED008BE89F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B61DD2C918BC3CBA00C6164B /* SMDataManager.h */,
+				B61DD2CA18BC3CBA00C6164B /* SMDataManager.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B61DD2C818BC3A5B00C6164B /* Meal.m in Sources */,
+				B61DD2CB18BC3CBA00C6164B /* SMDataManager.m in Sources */,
 				B69C5D66189C760400AFE961 /* SMAppDelegate.m in Sources */,
 				B61DD2C518BC3A5400C6164B /* _Meal.m in Sources */,
 				B69C5D95189C798F00AFE961 /* FoodItemCollectionViewCell.m in Sources */,

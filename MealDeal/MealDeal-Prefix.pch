@@ -16,9 +16,9 @@
 #endif
 
 typedef enum {
-    WeekDays_Monday = 0,
-    WeekDays_Tuesday,
-    WeekDays_Wednesday,
-    WeekDays_Thursday,
-    WeekDays_Friday
-}WeekDays;
+    WeekDay_Monday = 0,
+    WeekDay_Tuesday,
+    WeekDay_Wednesday,
+    WeekDay_Thursday,
+    WeekDay_Friday
+}WeekDay;
