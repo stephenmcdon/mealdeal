@@ -43,17 +43,28 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUg-zZ-rGM">
+                        <rect key="frame" x="0.0" y="49" width="320" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.93664944559999996" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="FT5-G1-Ewl"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstItem="YUg-zZ-rGM" firstAttribute="leading" secondItem="Mhh-JR-4No" secondAttribute="leading" id="GWL-4u-9ib"/>
                 <constraint firstItem="yz4-2s-REc" firstAttribute="leading" secondItem="Mhh-JR-4No" secondAttribute="leading" constant="10" id="Ipy-Kj-6Cq"/>
                 <constraint firstItem="yz4-2s-REc" firstAttribute="top" secondItem="Mhh-JR-4No" secondAttribute="top" constant="2" id="SFh-aA-PsY"/>
                 <constraint firstItem="goi-CK-3tl" firstAttribute="leading" secondItem="Mhh-JR-4No" secondAttribute="leading" constant="10" id="XAd-We-pa6"/>
                 <constraint firstItem="CsA-8w-5MQ" firstAttribute="top" secondItem="Mhh-JR-4No" secondAttribute="top" constant="2" id="bZN-0Y-dVa"/>
+                <constraint firstAttribute="trailing" secondItem="YUg-zZ-rGM" secondAttribute="trailing" id="cle-eB-O25"/>
                 <constraint firstItem="goi-CK-3tl" firstAttribute="top" secondItem="yz4-2s-REc" secondAttribute="bottom" constant="2" id="fM2-JM-Kx4"/>
                 <constraint firstItem="CsA-8w-5MQ" firstAttribute="leading" secondItem="yz4-2s-REc" secondAttribute="trailing" id="sDU-XY-dl9"/>
                 <constraint firstAttribute="trailing" secondItem="CsA-8w-5MQ" secondAttribute="trailing" constant="10" id="vaM-6b-HjI"/>
+                <constraint firstAttribute="bottom" secondItem="YUg-zZ-rGM" secondAttribute="bottom" id="xy8-KW-tgU"/>
             </constraints>
             <size key="customSize" width="356" height="49"/>
             <connections>

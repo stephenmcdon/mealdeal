@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *vendorTextField;
 @property (strong, nonatomic) IBOutlet UITextField *priceTextField;
 @property (strong, nonatomic) IBOutlet UIButton *addButton;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *daySegmentedControl;
 
 @end
 
@@ -81,7 +82,7 @@
     BOOL successful = [[SMDataManager sharedInstance] addMeal:self.mealTextField.text
                                                         price:self.priceTextField.text
                                                        vendor:self.vendorTextField.text
-                                                      weekDay:WeekDay_Monday];
+                                                      weekDay:self.daySegmentedControl.selectedSegmentIndex];
     if(successful) {
         [self resignAllFirstResponders];
         [self dismissViewControllerAnimated:YES completion:nil];

@@ -86,6 +86,4 @@ static SMDataManager *instance;
     return fetchRequest;
 }
 
-
-
 @end

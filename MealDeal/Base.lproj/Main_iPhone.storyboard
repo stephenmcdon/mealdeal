@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dYe-ob-oK0">
-                                <rect key="frame" x="0.0" y="61" width="320" height="29"/>
+                                <rect key="frame" x="5" y="61" width="310" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="f3z-3R-f4e"/>
@@ -77,7 +77,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gkf-BH-ZSw" firstAttribute="top" secondItem="dYe-ob-oK0" secondAttribute="bottom" constant="10" id="2Sd-RI-gc0"/>
-                            <constraint firstItem="dYe-ob-oK0" firstAttribute="leading" secondItem="xlg-Yx-s4G" secondAttribute="leading" id="8IQ-yO-9pu"/>
+                            <constraint firstItem="dYe-ob-oK0" firstAttribute="leading" secondItem="xlg-Yx-s4G" secondAttribute="leading" constant="5" id="8IQ-yO-9pu"/>
                             <constraint firstItem="itn-Dz-Kzl" firstAttribute="top" secondItem="Dkc-5W-ATq" secondAttribute="bottom" constant="10" id="8oZ-cL-a5e"/>
                             <constraint firstItem="gkf-BH-ZSw" firstAttribute="leading" secondItem="xlg-Yx-s4G" secondAttribute="leading" id="QBd-dd-27F"/>
                             <constraint firstItem="dYe-ob-oK0" firstAttribute="top" secondItem="itn-Dz-Kzl" secondAttribute="bottom" constant="10" id="T5J-hf-MYc"/>
@@ -87,7 +87,7 @@
                             <constraint firstAttribute="trailing" secondItem="gkf-BH-ZSw" secondAttribute="trailing" id="fKc-N2-WDp"/>
                             <constraint firstItem="EqD-zY-ZA5" firstAttribute="top" secondItem="gkf-BH-ZSw" secondAttribute="bottom" id="mBK-SO-5N9"/>
                             <constraint firstAttribute="trailing" secondItem="itn-Dz-Kzl" secondAttribute="trailing" id="sbk-Ze-OVN"/>
-                            <constraint firstAttribute="trailing" secondItem="dYe-ob-oK0" secondAttribute="trailing" id="xnh-j4-xQQ"/>
+                            <constraint firstAttribute="trailing" secondItem="dYe-ob-oK0" secondAttribute="trailing" constant="5" id="xnh-j4-xQQ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Monday" id="CG2-lQ-ddt"/>
@@ -156,35 +156,71 @@
                                     <action selector="addButtonTapped:" destination="WD1-dz-0xF" eventType="touchUpInside" id="nDu-P4-sID"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Meal" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Klp-nO-NbX">
-                                <rect key="frame" x="20" y="93" width="257" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Meal" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Klp-nO-NbX">
+                                <rect key="frame" x="5" y="86" width="310" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wWy-Om-nER"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Vendor" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lwK-xu-qSZ">
-                                <rect key="frame" x="20" y="147" width="257" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vendor" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lwK-xu-qSZ">
+                                <rect key="frame" x="5" y="141" width="310" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="63g-wG-Wh4"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lit-ha-aTA">
-                                <rect key="frame" x="20" y="203" width="257" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lit-ha-aTA">
+                                <rect key="frame" x="5" y="196" width="310" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dP0-kW-Pnw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PjW-o3-kEF">
+                                <rect key="frame" x="5" y="251" width="310" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="gO0-0K-PCk"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="MON"/>
+                                    <segment title="TUE"/>
+                                    <segment title="WED"/>
+                                    <segment title="THU"/>
+                                    <segment title="FRI"/>
+                                </segments>
+                                <color key="tintColor" red="0.29580236510000002" green="0.66666666669999997" blue="0.29969017409999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="lit-ha-aTA" firstAttribute="top" secondItem="lwK-xu-qSZ" secondAttribute="bottom" constant="25" id="34K-GK-zkf"/>
+                            <constraint firstItem="Klp-nO-NbX" firstAttribute="top" secondItem="NHc-8S-1QL" secondAttribute="bottom" constant="35" id="APr-Fy-9Bw"/>
                             <constraint firstItem="HG7-c5-cGs" firstAttribute="top" secondItem="VOQ-ie-WRR" secondAttribute="bottom" constant="5" id="DIL-fo-Lf7"/>
                             <constraint firstItem="avF-cg-nyM" firstAttribute="top" secondItem="VOQ-ie-WRR" secondAttribute="bottom" constant="5" id="Dnj-Nz-hol"/>
+                            <constraint firstItem="PjW-o3-kEF" firstAttribute="leading" secondItem="bUz-Yh-K1R" secondAttribute="leading" constant="5" id="H2V-i4-YT0"/>
                             <constraint firstItem="NHc-8S-1QL" firstAttribute="top" secondItem="VOQ-ie-WRR" secondAttribute="bottom" constant="10" id="JOf-ta-qbO"/>
                             <constraint firstAttribute="trailing" secondItem="NHc-8S-1QL" secondAttribute="trailing" id="Pcb-tg-OFB"/>
+                            <constraint firstItem="PjW-o3-kEF" firstAttribute="top" secondItem="lit-ha-aTA" secondAttribute="bottom" constant="25" id="V8c-me-tgZ"/>
                             <constraint firstItem="avF-cg-nyM" firstAttribute="leading" secondItem="bUz-Yh-K1R" secondAttribute="leading" constant="5" id="VTK-Cv-tFy"/>
                             <constraint firstItem="NHc-8S-1QL" firstAttribute="leading" secondItem="bUz-Yh-K1R" secondAttribute="leading" id="cWh-g8-2a7"/>
+                            <constraint firstAttribute="trailing" secondItem="PjW-o3-kEF" secondAttribute="trailing" constant="5" id="eUa-Za-ykg"/>
+                            <constraint firstItem="lwK-xu-qSZ" firstAttribute="leading" secondItem="bUz-Yh-K1R" secondAttribute="leading" constant="5" id="efM-qQ-nYI"/>
+                            <constraint firstItem="lit-ha-aTA" firstAttribute="leading" secondItem="bUz-Yh-K1R" secondAttribute="leading" constant="5" id="gh4-J1-IgW"/>
+                            <constraint firstAttribute="trailing" secondItem="lit-ha-aTA" secondAttribute="trailing" constant="5" id="hYJ-iU-lEj"/>
+                            <constraint firstItem="Klp-nO-NbX" firstAttribute="leading" secondItem="bUz-Yh-K1R" secondAttribute="leading" constant="5" id="lAY-OS-jEK"/>
                             <constraint firstAttribute="trailing" secondItem="HG7-c5-cGs" secondAttribute="trailing" constant="5" id="lwD-6N-82y"/>
+                            <constraint firstItem="lwK-xu-qSZ" firstAttribute="top" secondItem="Klp-nO-NbX" secondAttribute="bottom" constant="25" id="oGw-Yp-qBz"/>
+                            <constraint firstAttribute="trailing" secondItem="lwK-xu-qSZ" secondAttribute="trailing" constant="5" id="pYR-Kv-4M5"/>
+                            <constraint firstAttribute="trailing" secondItem="Klp-nO-NbX" secondAttribute="trailing" constant="5" id="v7y-1e-trb"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="C9Y-Sj-NZ1" appends="YES" id="Cee-5k-wYj"/>
@@ -192,6 +228,7 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="HG7-c5-cGs" id="xSR-Wl-Lzn"/>
+                        <outlet property="daySegmentedControl" destination="PjW-o3-kEF" id="39O-K2-q4n"/>
                         <outlet property="mealTextField" destination="Klp-nO-NbX" id="L43-Sp-v2z"/>
                         <outlet property="priceTextField" destination="lit-ha-aTA" id="LqL-cg-dFd"/>
                         <outlet property="vendorTextField" destination="lwK-xu-qSZ" id="Kv8-rP-n10"/>
