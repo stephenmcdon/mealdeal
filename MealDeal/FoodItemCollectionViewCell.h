@@ -12,4 +12,7 @@
 
 - (void)setupCellWithVendor:(NSString *)vendor menuItem:(NSString *)menuItem price:(NSString *)price;
 
+- (void)showDeleteButton;
+- (void)hideDeleteButton;
+
 @end

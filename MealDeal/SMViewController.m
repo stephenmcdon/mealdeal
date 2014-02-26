@@ -62,7 +62,20 @@
     FoodItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([FoodItemCollectionViewCell class]) forIndexPath:indexPath];
     Meal *meal = [self.dealsArray objectAtIndex:indexPath.row];
     [cell setupCellWithVendor:meal.vendor menuItem:meal.meal price:meal.price];
+    [self addSwipeGestureRecognizerToCell:cell];
     return cell;
+}
+
+- (void)addSwipeGestureRecognizerToCell:(UICollectionViewCell *)cell {
+    
+    UISwipeGestureRecognizer *leftGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeLeft:)];
+    [leftGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [cell addGestureRecognizer:leftGestureRecognizer];
+    
+    UISwipeGestureRecognizer *rightGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight:)];
+    [rightGestureRecognizer setDirection:UISwipeGestureRecognizerDirectionRight];
+    [cell addGestureRecognizer:rightGestureRecognizer];
+    
 }
 
 #pragma mark - NIBs
@@ -103,6 +116,18 @@
 - (void)retrieveMealsForCurrentDay {
     self.dealsArray = [[SMDataManager sharedInstance] allMealsForWeekDay:self.currentDay];
     [self.collectionView reloadData];
+}
+
+#pragma mark - Cell Swipe Gestures
+
+- (void)handleSwipeLeft:(UISwipeGestureRecognizer *)sender {
+    FoodItemCollectionViewCell *cell = (FoodItemCollectionViewCell *)sender.view;
+    [cell showDeleteButton];
+}
+
+- (void)handleSwipeRight:(UISwipeGestureRecognizer *)sender {
+    FoodItemCollectionViewCell *cell = (FoodItemCollectionViewCell *)sender.view;
+    [cell hideDeleteButton];
 }
 
 @end
