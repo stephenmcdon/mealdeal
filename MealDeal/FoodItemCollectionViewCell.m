@@ -25,9 +25,9 @@
 @implementation FoodItemCollectionViewCell
 
 - (void)setupCellWithVendor:(NSString *)vendor menuItem:(NSString *)menuItem price:(NSString *)price {
-    _vendorLabel.text = vendor;
-    _menuItemLabel.text = menuItem;
-    _priceLabel.text = price;
+    self.vendorLabel.text = vendor;
+    self.menuItemLabel.text = menuItem;
+    self.priceLabel.text = price;
     [self resetWidthLayoutConstraints];
 }
 

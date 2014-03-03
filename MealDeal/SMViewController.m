@@ -9,6 +9,7 @@
 #import "FoodItemCollectionViewCell.h"
 #import "Meal.h"
 #import "SMDataManager.h"
+#import "SMDateUtil.h"
 #import "SMViewController.h"
 
 #define kNoRowShowingDeleteButton -1
@@ -18,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *daySegmentedControl;
 
-@property (nonatomic, assign) NSInteger currentDay;
+@property (nonatomic, assign) WeekDay currentDay;
 @property (strong, nonatomic) NSArray *dealsArray;
 @property (nonatomic, assign) NSInteger currentRowShowingDeleteButton;
 
@@ -44,6 +45,24 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+}
+
+#pragma mark - NIBs
+
+- (void)registerNibForCollectionViewCell {
+    UINib *nib = [UINib nibWithNibName:@"FoodItemCollectionViewCell" bundle:nil];
+    [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([FoodItemCollectionViewCell class])];
+}
+
+#pragma mark - View Lifecycle Helpers
+
+- (void)setupDaySegmentControl {
+    [self.daySegmentedControl addTarget:self action:@selector(daySegmentedControlValueChanged) forControlEvents:UIControlEventValueChanged];
+    [self.daySegmentedControl setSelectedSegmentIndex:self.currentDay];
+}
+
+- (void)setupCurrentDay {
+    self.currentDay = [[SMDateUtil sharedInstance] currentDay];
 }
 
 #pragma mark - SegmentedControl
@@ -92,39 +111,6 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self hideCurrentRowShowingDeleteButton];
-}
-
-#pragma mark - NIBs
-
-- (void)registerNibForCollectionViewCell {
-    UINib *nib = [UINib nibWithNibName:@"FoodItemCollectionViewCell" bundle:nil];
-    [self.collectionView registerNib:nib forCellWithReuseIdentifier:NSStringFromClass([FoodItemCollectionViewCell class])];
-}
-
-#pragma mark - View Lifecycle Helpers
-
-- (void)setupDaySegmentControl {
-    [self.daySegmentedControl addTarget:self action:@selector(daySegmentedControlValueChanged) forControlEvents:UIControlEventValueChanged];
-    [self.daySegmentedControl setSelectedSegmentIndex:self.currentDay];
-}
-
-- (void)setupCurrentDay {
-    NSDate *today = [NSDate date];
-    NSDateFormatter *todayNumberDateFormatter = [[NSDateFormatter alloc] init];
-    [todayNumberDateFormatter setDateFormat:@"c"];
-    NSString *todayString = [todayNumberDateFormatter stringFromDate:today];
-    NSInteger todayInt = [self adjustTodayIntToMondayIfNeeded:[todayString integerValue]];
-    self.currentDay = todayInt;
-}
-
-- (NSInteger)adjustTodayIntToMondayIfNeeded:(NSInteger)todayInt {
-    
-    todayInt -= 2;  //offset so Monday now = 0
-    
-    if(todayInt < WeekDay_Monday || todayInt > WeekDay_Friday) {
-        todayInt = WeekDay_Monday;
-    }
-    return todayInt;
 }
 
 #pragma mark - Data Retrieval

@@ -29,6 +29,7 @@
 		B69C5D92189C796100AFE961 /* FoodItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69C5D91189C796100AFE961 /* FoodItemCollectionViewCell.xib */; };
 		B69C5D95189C798F00AFE961 /* FoodItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B69C5D94189C798F00AFE961 /* FoodItemCollectionViewCell.m */; };
 		B69FAEE518A882BC0006F33C /* SMAddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69FAEE418A882BC0006F33C /* SMAddItemViewController.m */; };
+		B6BD84E118C43C99002BB7F4 /* SMDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BD84E018C43C99002BB7F4 /* SMDateUtil.m */; };
 		B6CC2CEC18A316E4008F3425 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D59189C760400AFE961 /* UIKit.framework */; };
 		B6CC2CED18A316E4008F3425 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D55189C760400AFE961 /* Foundation.framework */; };
 		B6CC2CEE18A316E4008F3425 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69C5D57189C760400AFE961 /* CoreGraphics.framework */; };
@@ -81,6 +82,8 @@
 		B69C5D94189C798F00AFE961 /* FoodItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodItemCollectionViewCell.m; sourceTree = "<group>"; };
 		B69FAEE318A882BC0006F33C /* SMAddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMAddItemViewController.h; sourceTree = "<group>"; };
 		B69FAEE418A882BC0006F33C /* SMAddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMAddItemViewController.m; sourceTree = "<group>"; };
+		B6BD84DF18C43C99002BB7F4 /* SMDateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDateUtil.h; sourceTree = "<group>"; };
+		B6BD84E018C43C99002BB7F4 /* SMDateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDateUtil.m; sourceTree = "<group>"; };
 		B6CC2CEB18A316E4008F3425 /* MealDealSpecs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MealDealSpecs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CC2CF118A316E4008F3425 /* MealDealSpecs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MealDealSpecs-Info.plist"; sourceTree = "<group>"; };
 		B6CC2CF318A316E4008F3425 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 			children = (
 				B61DD2C918BC3CBA00C6164B /* SMDataManager.h */,
 				B61DD2CA18BC3CBA00C6164B /* SMDataManager.m */,
+				B6BD84DF18C43C99002BB7F4 /* SMDateUtil.h */,
+				B6BD84E018C43C99002BB7F4 /* SMDateUtil.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B61DD2C818BC3A5B00C6164B /* Meal.m in Sources */,
+				B6BD84E118C43C99002BB7F4 /* SMDateUtil.m in Sources */,
 				B61DD2CB18BC3CBA00C6164B /* SMDataManager.m in Sources */,
 				B69C5D66189C760400AFE961 /* SMAppDelegate.m in Sources */,
 				B61DD2C518BC3A5400C6164B /* _Meal.m in Sources */,

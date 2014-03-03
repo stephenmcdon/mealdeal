@@ -9,6 +9,7 @@
 #import "Meal.h"
 #import "SMAddItemViewController.h"
 #import "SMDataManager.h"
+#import "SMDateUtil.h"
 
 @interface SMAddItemViewController () <UITextFieldDelegate>
 
@@ -29,6 +30,7 @@
     [super viewDidLoad];
     [self.addButton setEnabled:NO];
     [self setupTextFieldDelegates];
+    [self.daySegmentedControl setSelectedSegmentIndex:[[SMDateUtil sharedInstance] currentDay]];
 }
 
 #pragma mark - View Lifecycle Helpers
