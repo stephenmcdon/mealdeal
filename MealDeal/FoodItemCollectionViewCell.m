@@ -28,6 +28,12 @@
     _vendorLabel.text = vendor;
     _menuItemLabel.text = menuItem;
     _priceLabel.text = price;
+    [self resetWidthLayoutConstraints];
+}
+
+- (void)resetWidthLayoutConstraints {
+    self.menuItemLabelWidthLayoutConstraint.constant = kOriginalMenuItemLabelWidth;
+    self.vendorLabelWidthLayoutConstraint.constant = kOriginalMenuItemLabelWidth;
 }
 
 - (void)showDeleteButton {
