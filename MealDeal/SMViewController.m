@@ -11,7 +11,7 @@
 #import "SMDataManager.h"
 #import "SMViewController.h"
 
-@interface SMViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SMViewController () <UICollectionViewDataSource, UICollectionViewDelegate, FoodItemCollectionViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *daySegmentedControl;
@@ -47,7 +47,6 @@
 - (void)daySegmentedControlValueChanged {
     self.currentDay = self.daySegmentedControl.selectedSegmentIndex;
     [self retrieveMealsForCurrentDay];
-    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionView methods
@@ -62,6 +61,7 @@
     FoodItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([FoodItemCollectionViewCell class]) forIndexPath:indexPath];
     Meal *meal = [self.dealsArray objectAtIndex:indexPath.row];
     [cell setupCellWithVendor:meal.vendor menuItem:meal.meal price:meal.price];
+    cell.delegate = self;
     [self addSwipeGestureRecognizerToCell:cell];
     return cell;
 }
@@ -128,6 +128,20 @@
 - (void)handleSwipeRight:(UISwipeGestureRecognizer *)sender {
     FoodItemCollectionViewCell *cell = (FoodItemCollectionViewCell *)sender.view;
     [cell hideDeleteButton];
+}
+
+#pragma mark - FoodItemCollectionViewCellDelegate methods
+
+- (void)deleteButtonPressedForCell:(FoodItemCollectionViewCell *)cell {
+    NSIndexPath *indexPathForCell = [self.collectionView indexPathForCell:cell];
+    Meal *meal = [self.dealsArray objectAtIndex:indexPathForCell.row];
+    BOOL isSuccessfullyDeleted = [[SMDataManager sharedInstance] deleteMeal:meal.meal
+                                                     price:meal.price
+                                                    vendor:meal.vendor
+                                                   weekDay:[meal.day integerValue]];
+    if(isSuccessfullyDeleted) {
+        [self retrieveMealsForCurrentDay];
+    }
 }
 
 @end

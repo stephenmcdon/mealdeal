@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class FoodItemCollectionViewCell;
+
+@protocol FoodItemCollectionViewCellDelegate <NSObject>
+
+@required
+- (void)deleteButtonPressedForCell:(FoodItemCollectionViewCell *)cell;
+
+@end
 
 @interface FoodItemCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic,assign) id<FoodItemCollectionViewCellDelegate> delegate;
 
 - (void)setupCellWithVendor:(NSString *)vendor menuItem:(NSString *)menuItem price:(NSString *)price;
 

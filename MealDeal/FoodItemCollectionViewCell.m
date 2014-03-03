@@ -50,4 +50,8 @@
     }];
 }
 
+- (IBAction)deleteButtonPressed:(id)sender {
+    [self.delegate deleteButtonPressedForCell:self];
+}
+
 @end

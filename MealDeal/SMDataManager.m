@@ -64,16 +64,40 @@ static SMDataManager *instance;
     newMeal.vendor = vendor;
     newMeal.day = [[NSNumber alloc] initWithInt:weekDay];
     
-    BOOL successfullyAdded = NO;
+    BOOL isSuccessfullyAdded = NO;
     NSError *error;
     
     [newMeal.managedObjectContext save:&error];
     
     if(!error) {
-        successfullyAdded = YES;
+        isSuccessfullyAdded = YES;
     }
     
-    return successfullyAdded;
+    return isSuccessfullyAdded;
+}
+
+
+- (BOOL)deleteMeal:(NSString *) meal
+             price:(NSString *)price
+            vendor:(NSString *)vendor
+           weekDay:(WeekDay)weekDay {
+    
+    BOOL isSuccessfullyDeleted = NO;
+    NSError *error;
+    
+    NSManagedObject *managedObject = [self managedObjectForMeal:meal price:price vendor:vendor weekDay:weekDay];
+    if(managedObject) {
+        
+        [self.managedObjectContext deleteObject:managedObject];
+        [self.managedObjectContext save:&error];
+        
+        if(!error) {
+            isSuccessfullyDeleted = YES;
+        }
+        
+    }
+    
+    return isSuccessfullyDeleted;
 }
 
 #pragma mark - Helpers
@@ -84,6 +108,26 @@ static SMDataManager *instance;
                                                          inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entityDescription];
     return fetchRequest;
+}
+
+- (NSManagedObject *)managedObjectForMeal:(NSString *)meal
+                                    price:(NSString *)price
+                                   vendor:(NSString *)vendor
+                                  weekDay:(WeekDay)weekDay{
+    
+    NSFetchRequest *request = [self fetchRequestForEntityName:@"Meal"];
+    NSPredicate *dayPredicate = [NSPredicate predicateWithFormat:@"meal == %@ AND price == %@ AND vendor == %@ AND day == %d", meal, price, vendor, weekDay];
+    [request setPredicate:dayPredicate];
+    
+    NSError *error;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    NSManagedObject *managedObject = nil;
+    
+    if(results && results.count > 0) {
+        managedObject = results[0];
+    }
+    return managedObject;
 }
 
 @end
