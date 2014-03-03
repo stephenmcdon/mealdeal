@@ -171,7 +171,10 @@
 }
 
 - (void)hideDeleteButtonForCell:(FoodItemCollectionViewCell *)cell {
-    self.currentRowShowingDeleteButton = kNoRowShowingDeleteButton;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    if(self.currentRowShowingDeleteButton == indexPath.row) {
+        self.currentRowShowingDeleteButton = kNoRowShowingDeleteButton;
+    }
     [cell hideDeleteButton];
 }
 
