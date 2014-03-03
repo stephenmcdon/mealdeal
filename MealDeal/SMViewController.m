@@ -11,13 +11,16 @@
 #import "SMDataManager.h"
 #import "SMViewController.h"
 
+#define kNoRowShowingDeleteButton -1
+
 @interface SMViewController () <UICollectionViewDataSource, UICollectionViewDelegate, FoodItemCollectionViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *daySegmentedControl;
 
-@property (nonatomic,assign) NSInteger currentDay;
+@property (nonatomic, assign) NSInteger currentDay;
 @property (strong, nonatomic) NSArray *dealsArray;
+@property (nonatomic, assign) NSInteger currentRowShowingDeleteButton;
 
 @end
 
@@ -31,6 +34,7 @@
     [self setupCurrentDay];
     [self setupDaySegmentControl];
 	[self registerNibForCollectionViewCell];
+    self.currentRowShowingDeleteButton = kNoRowShowingDeleteButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,6 +82,18 @@
     
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.currentRowShowingDeleteButton != indexPath.row) {
+        [self hideCurrentRowShowingDeleteButton];
+    }
+}
+
+#pragma mark - UIScrollView methods
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self hideCurrentRowShowingDeleteButton];
+}
+
 #pragma mark - NIBs
 
 - (void)registerNibForCollectionViewCell {
@@ -122,11 +138,40 @@
 
 - (void)handleSwipeLeft:(UISwipeGestureRecognizer *)sender {
     FoodItemCollectionViewCell *cell = (FoodItemCollectionViewCell *)sender.view;
-    [cell showDeleteButton];
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    if(indexPath.row != self.currentRowShowingDeleteButton) {
+        [self hideCurrentRowShowingDeleteButton];
+    }
+    [self showDeleteButtonForCell:cell];
 }
 
 - (void)handleSwipeRight:(UISwipeGestureRecognizer *)sender {
     FoodItemCollectionViewCell *cell = (FoodItemCollectionViewCell *)sender.view;
+    [self hideDeleteButtonForCell:cell];
+}
+
+#pragma mark - Cell showing/hiding Delete Button
+
+- (void)showDeleteButtonForCell:(FoodItemCollectionViewCell *)cell {
+    [self setCellAsCurrentShowingDelete:cell];
+    [cell showDeleteButton];
+}
+
+- (void)setCellAsCurrentShowingDelete:(FoodItemCollectionViewCell *)cell {
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    self.currentRowShowingDeleteButton = indexPath.row;
+}
+
+- (void)hideCurrentRowShowingDeleteButton {
+    if (self.currentRowShowingDeleteButton >= 0) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.currentRowShowingDeleteButton inSection:0];
+        FoodItemCollectionViewCell *cell =(FoodItemCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        [self hideDeleteButtonForCell:cell];
+    }
+}
+
+- (void)hideDeleteButtonForCell:(FoodItemCollectionViewCell *)cell {
+    self.currentRowShowingDeleteButton = kNoRowShowingDeleteButton;
     [cell hideDeleteButton];
 }
 
