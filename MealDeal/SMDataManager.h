@@ -16,6 +16,8 @@
 
 - (NSArray *)allMealsForWeekDay:(WeekDay)weekDay;
 
+- (NSArray *)allMealsForWeekDay:(WeekDay)weekDay containingMealText:(NSString *)text;
+
 - (BOOL)deleteMeal:(NSString *) meal
              price:(NSString *)price
             vendor:(NSString *)vendor

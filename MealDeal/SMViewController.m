@@ -14,10 +14,11 @@
 
 #define kNoRowShowingDeleteButton -1
 
-@interface SMViewController () <UICollectionViewDataSource, UICollectionViewDelegate, FoodItemCollectionViewCellDelegate>
+@interface SMViewController () <UICollectionViewDataSource, UICollectionViewDelegate, FoodItemCollectionViewCellDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *daySegmentedControl;
+@property (strong, nonatomic) IBOutlet UISearchBar *mealSearchBar;
 
 @property (nonatomic, assign) WeekDay currentDay;
 @property (strong, nonatomic) NSArray *dealsArray;
@@ -69,6 +70,8 @@
 
 - (void)daySegmentedControlValueChanged {
     self.currentDay = self.daySegmentedControl.selectedSegmentIndex;
+    self.mealSearchBar.text = @"";
+    [self.mealSearchBar resignFirstResponder];
     [self retrieveMealsForCurrentDay];
 }
 
@@ -105,18 +108,25 @@
     if (self.currentRowShowingDeleteButton != indexPath.row) {
         [self hideCurrentRowShowingDeleteButton];
     }
+    [self.mealSearchBar resignFirstResponder];
 }
 
 #pragma mark - UIScrollView methods
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self hideCurrentRowShowingDeleteButton];
+    [self.mealSearchBar resignFirstResponder];
 }
 
 #pragma mark - Data Retrieval
 
 - (void)retrieveMealsForCurrentDay {
     self.dealsArray = [[SMDataManager sharedInstance] allMealsForWeekDay:self.currentDay];
+    [self.collectionView reloadData];
+}
+
+- (void)updateMealsWithText:(NSString *)searchText {
+    self.dealsArray = [[SMDataManager sharedInstance] allMealsForWeekDay:self.currentDay containingMealText:searchText];
     [self.collectionView reloadData];
 }
 
@@ -129,11 +139,13 @@
         [self hideCurrentRowShowingDeleteButton];
     }
     [self showDeleteButtonForCell:cell];
+    [self.mealSearchBar resignFirstResponder];
 }
 
 - (void)handleSwipeRight:(UISwipeGestureRecognizer *)sender {
     FoodItemCollectionViewCell *cell = (FoodItemCollectionViewCell *)sender.view;
     [self hideDeleteButtonForCell:cell];
+    [self.mealSearchBar resignFirstResponder];
 }
 
 #pragma mark - Cell showing/hiding Delete Button
@@ -164,6 +176,32 @@
     [cell hideDeleteButton];
 }
 
+#pragma mark - UISearchBarDelegate methods
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if(searchText.length > 0) {
+        [self updateMealsWithText:searchText];
+    } else {
+        [self retrieveMealsForCurrentDay];
+    }
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [self hideCurrentRowShowingDeleteButton];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"Called.");
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([self.mealSearchBar isFirstResponder] && [touch view] != self.mealSearchBar)
+    {
+        [self.mealSearchBar resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
+
+
 #pragma mark - FoodItemCollectionViewCellDelegate methods
 
 - (void)deleteButtonPressedForCell:(FoodItemCollectionViewCell *)cell {
@@ -174,6 +212,7 @@
                                                     vendor:meal.vendor
                                                    weekDay:[meal.day integerValue]];
     if(isSuccessfullyDeleted) {
+        self.mealSearchBar.text = @"";
         [self retrieveMealsForCurrentDay];
     }
 }

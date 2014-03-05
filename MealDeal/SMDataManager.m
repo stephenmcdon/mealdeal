@@ -52,6 +52,19 @@ static SMDataManager *instance;
     return results;
 }
 
+- (NSArray *)allMealsForWeekDay:(WeekDay)weekDay containingMealText:(NSString *)text {
+    NSFetchRequest *request = [self fetchRequestForEntityName:@"Meal"];
+    
+    NSPredicate *dayAndTextPredicate = [NSPredicate predicateWithFormat:@"day == %d AND meal CONTAINS[cd] %@",weekDay,text];
+    [request setPredicate:dayAndTextPredicate];
+    
+    NSError *error;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request
+                                                                error:&error];
+    return results;
+    
+}
+
 - (BOOL)addMeal:(NSString *)meal
           price:(NSString *)price
          vendor:(NSString *)vendor
@@ -75,7 +88,6 @@ static SMDataManager *instance;
     
     return isSuccessfullyAdded;
 }
-
 
 - (BOOL)deleteMeal:(NSString *) meal
              price:(NSString *)price
